@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+env/
+
+# Build and Installers
+build/
+dist/
+installer/
+*.spec
+*.exe
+
+# Database & Logs
+*.db
+*.log
+
+# IDE
+.vscode/
+.idea/
+.claude/

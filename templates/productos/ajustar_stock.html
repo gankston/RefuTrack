@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}Ajustar Stock - {{ producto.sku }} - {{ app_title }}{% endblock %}
+
+{% block content %}
+    <div class="row mb-4">
+        <div class="col-md-8">
+            <h3>📦 Ingreso / Salida: {{ producto.sku }} — {{ producto.nombre }}</h3>
+        </div>
+        <div class="col-md-4">
+            <div class="card bg-info text-white">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Stock Actual</h5>
+                    <h2>{{ producto.stock }}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <form method="post" class="row gy-3">
+        <div class="col-md-4">
+            <label class="form-label">Cantidad</label>
+            <input name="cantidad" type="number" class="form-control" value="0" required>
+            <div class="form-text">
+                <strong>Positivo:</strong> Ingreso de stock<br>
+                <strong>Negativo:</strong> Salida de stock
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <label class="form-label">Destino (solo para salidas)</label>
+            <input name="destino" class="form-control" 
+                   placeholder="Ej: topadora, retro, camioneta">
+            <div class="form-text">Obligatorio para movimientos negativos</div>
+        </div>
+        
+        <div class="col-md-4">
+            <label class="form-label">Nota</label>
+            <input name="nota" class="form-control" 
+                   placeholder="Factura, motivo, etc.">
+        </div>
+        
+        <div class="col-12">
+            <div class="alert alert-info">
+                <h6>📝 Ejemplos de uso:</h6>
+                <ul class="mb-0">
+                    <li><strong>+10:</strong> Ingreso de 10 unidades</li>
+                    <li><strong>-2:</strong> Salida de 2 unidades (requiere destino)</li>
+                    <li><strong>+5:</strong> Devolución de stock</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="col-12">
+            <button class="btn btn-success" type="submit">✅ Aplicar movimiento</button>
+            <a class="btn btn-secondary" href="/productos">❌ Cancelar</a>
+        </div>
+    </form>
+{% endblock %}
